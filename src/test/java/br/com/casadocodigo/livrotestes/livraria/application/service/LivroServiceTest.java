@@ -11,8 +11,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static br.com.casadocodigo.livrotestes.livraria.application.util.MessagensUtil.getMensagem;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -72,6 +71,23 @@ public class LivroServiceTest {
         verify(this.livroRepository).getReferenceById(livro.getId());
 
         assertEquals(erro.getMessage(), getMensagem("livro.estoque.erro"));
+    }
+
+    @Test
+    public void testExcluirComSucesso() throws EstoqueLivroException {
+        Livro livro = new Livro();
+        livro.setId(1L);
+        livro.setIsbn("9785934588347");
+        livro.setQuantidade(0);
+
+        when(this.livroRepository.getReferenceById(livro.getId())).thenReturn(livro);
+
+        assertDoesNotThrow(() -> this.livroService.excluir(livro.getId()));
+
+        verify(this.livroRepository).getReferenceById(livro.getId());
+        verify(this.livroRepository).deleteById(livro.getId());
+
+
     }
 
 }
