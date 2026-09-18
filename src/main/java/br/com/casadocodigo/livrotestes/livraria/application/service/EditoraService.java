@@ -58,4 +58,8 @@ public class EditoraService {
 	public double obterDesconto(Editora editora) {
 		return editoraRepository.getReferenceById(editora.getId()).getDesconto();
 	}
+
+    public Object obe() {
+        return null;
+    }
 }
