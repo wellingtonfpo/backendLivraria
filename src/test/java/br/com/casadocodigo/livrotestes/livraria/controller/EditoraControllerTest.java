@@ -1,4 +1,4 @@
-package br.com.casadocodigo.livrotestes.livraria.application.controller;
+package br.com.casadocodigo.livrotestes.livraria.controller;
 
 import br.com.casadocodigo.livrotestes.livraria.application.excecoes.CampoInvalidoException;
 import br.com.casadocodigo.livrotestes.livraria.application.service.EditoraService;
